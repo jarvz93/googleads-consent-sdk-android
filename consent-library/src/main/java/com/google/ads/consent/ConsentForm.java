@@ -39,6 +39,7 @@ import com.google.gson.Gson;
 import java.io.ByteArrayOutputStream;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Locale;
 
 /**
  * A Google rendered form for collecting consent from a user.
@@ -270,7 +271,19 @@ public class ConsentForm {
         }
 
         this.loadState = LoadState.LOADING;
-        this.webView.loadUrl("file:///android_asset/consentform.html");
+        this.webView.loadUrl(getConsentFormFromLanguage());
+    }
+
+    private String getConsentFormFromLanguage(){
+        String consentForm;
+
+        switch (Locale.getDefault().getLanguage().toLowerCase()){
+            case "it": consentForm = "file:///android_asset/consentform_it.html";
+            case "ru": consentForm = "file:///android_asset/consentform_ru.html";
+            default: consentForm = "file:///android_asset/consentform.html";
+
+        }
+        return consentForm;
     }
 
     private void handleLoadComplete(String status) {
