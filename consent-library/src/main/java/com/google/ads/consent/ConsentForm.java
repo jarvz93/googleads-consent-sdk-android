@@ -277,6 +277,7 @@ public class ConsentForm {
     private String getConsentFormFromLanguage(){
         String consentForm;
 
+
         switch (Locale.getDefault().getLanguage().toLowerCase()){
             case "it": consentForm = "file:///android_asset/consentform_it.html";
             case "ru": consentForm = "file:///android_asset/consentform_ru.html";
