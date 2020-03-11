@@ -278,12 +278,16 @@ public class ConsentForm {
         String consentForm;
 
 
-        switch (Locale.getDefault().getLanguage().toLowerCase()){
-            case "it": consentForm = "file:///android_asset/consentform_it.html";
-            case "ru": consentForm = "file:///android_asset/consentform_ru.html";
-            default: consentForm = "file:///android_asset/consentform.html";
+        if(Locale.getDefault().getLanguage().toLowerCase().equals("it")){
+            consentForm = "file:///android_asset/consentform_it.html";
 
+        }else if(Locale.getDefault().getLanguage().toLowerCase().equals("ru")){
+            consentForm = "file:///android_asset/consentform_ru.html";
+
+        }else {
+            consentForm = "file:///android_asset/consentform.html";
         }
+
         return consentForm;
     }
 
